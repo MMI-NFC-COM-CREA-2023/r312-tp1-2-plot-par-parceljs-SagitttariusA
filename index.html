@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page avec sous-parties</title>
+
+    <style>
+        /* Styles pour les sections */
+        section {
+            margin-bottom: 50px;
+        }
+
+        /* Style pour les divs graphiques */
+        .graph-container {
+            height: 300px;
+            width: 500px;
+            background-color: #e0e0e0;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #ccc;
+        }
+
+        /* Style pour le menu de navigation */
+        nav {
+            margin-bottom: 20px;
+        }
+
+        nav a {
+            margin-right: 15px;
+            text-decoration: none;
+            color: #007bff;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>My Penguin Page</h1>
+</body>
+
+<body>
+    
+    <nav>
+        <a href="#1">Graphique 1</a>
+        <a href="#2">Graphique 2</a>
+    </nav>
+
+    <section id="1">
+        <h2>Graphique 1</h2>
+        
+        
+        
+
+        <body>
+    
+            <div id="Graphique1"></div>
+        
+            <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+            <script src="https://cdn.jsdelivr.net/npm/@observablehq/plot@0.6"></script>
+        
+            <script type="module">
+        
+                import * as Plot from "https://cdn.jsdelivr.net/npm/@observablehq/plot@0.6/+esm";
+        
+                const penguinreponse = await fetch("Penguin.json");
+                const penguin = await penguinreponse.json();
+                console.log(penguin);
+        
+                const plot = Plot.dot(penguin, {x: "culmen_length_mm", y: "culmen_depth_mm", stroke: "species"}).plot();
+                const div = document.querySelector("#Graphique1");
+                div.append(plot);
+        
+            </script>
+
+            <p>Ceci est le texte descriptif.</p>
+        
+        </body>
+        
+        
+        <div id="graph1" class="graph-container">
+            Graphique 1 à insérer ici
+        </div>
+    </section>
+
+    
+    <section id="2">
+        <h2>Graphique 2</h2>
+        <p>Ceci est le texte descriptif.</p>
+        
+        <!-- Figure avec figcaption -->
+        <figure>
+            <img src="image2.jpg" alt="Description de l'image 2" style="max-width: 100%;">
+            <figcaption>Légende pour l'image 2.</figcaption>
+        </figure>
+        
+        
+        <div id="graph2" class="graph-container">
+            Graphique 2 à insérer ici
+        </div>
+
+    </section>
+
+</body>
+</html>

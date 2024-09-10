@@ -1,0 +1,35 @@
+<!doctype html>
+<head>
+    <meta charset="utf-8"/>
+    <title>My Penguin Page</title>
+
+</head>
+
+<body>
+    <h1>My Penguin Page</h1>
+</body>
+
+<body>
+    
+    <div id="myplot"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@observablehq/plot@0.6"></script>
+
+    <script type="module">
+
+        import * as Plot from "https://cdn.jsdelivr.net/npm/@observablehq/plot@0.6/+esm";
+
+        const penguinreponse = await fetch("Penguin.json");
+        const penguin = await penguinreponse.json();
+        console.log(penguin);
+
+        const plot = Plot.dot(penguin, {x: "culmen_length_mm", y: "culmen_depth_mm", stroke: "species"}).plot();
+        const div = document.querySelector("#myplot");
+        div.append(plot);
+
+    </script>
+
+    <p>Ceci est le texte descriptif.</p>
+
+</body>
